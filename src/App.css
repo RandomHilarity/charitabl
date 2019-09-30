@@ -20,3 +20,30 @@
 .App-link {
   color: #09d3ac;
 }
+
+/* Colours */
+
+.orange {
+  background-color: #e55812;
+  color: #efe7da
+}
+
+.eggshell {
+  background-color: #efe7da;
+  color: #2b2b2b
+}
+
+.green {
+  background-color: #95c623;
+  color: #2b2b2b
+}
+
+.navy {
+  background-color: #0e4749;
+  color: #efe7da
+}
+
+.dark {
+  background-color: #002626;
+  color: #efe7da
+}
