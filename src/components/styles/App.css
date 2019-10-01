@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.main {
+  margin: auto;
+  width: 90%;
+}
+
 .footer {
   position: absolute;
   left: 0;
