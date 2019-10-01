@@ -23,27 +23,27 @@
 
 /* Colours */
 
-.orange {
-  background-color: #e55812;
+.blue {
+  background-color: #5bc0eb;
   color: #efe7da
 }
 
-.eggshell {
-  background-color: #efe7da;
+.yellow {
+  background-color: #fde74c;
   color: #2b2b2b
 }
 
 .green {
-  background-color: #95c623;
-  color: #2b2b2b
-}
-
-.navy {
-  background-color: #0e4749;
+  background-color: #9bc53d;
   color: #efe7da
 }
 
-.dark {
-  background-color: #002626;
+.red {
+  background-color: #c3423f;
+  color: #efe7da
+}
+
+.black {
+  background-color: #211a1e;
   color: #efe7da
 }
