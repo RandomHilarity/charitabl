@@ -10,7 +10,6 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     padding: theme.spacing(2),
-    margin: theme.spacing(3),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },

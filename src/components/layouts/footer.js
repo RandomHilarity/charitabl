@@ -1,6 +1,6 @@
 import React from 'react'
 
 export default props =>
-  <h6>
+  <footer class="footer green">
     Footer
-  </h6>
+  </footer>
