@@ -7,7 +7,8 @@ import Footer from "../components/layouts/footer"
 import Header from "../components/layouts/header"
 import Landing from "../components/landing"
 import Donation from "../components/make_donation"
-import Search from "../components/search"
+import SearchCharities from "../components/search_charities"
+import SearchDonations from "../components/search_donations"
 import Signup from "../components/signup"
 import Thank from "../components/thank"
 
@@ -44,7 +45,8 @@ const charities = [
     country: "Canada",
     short_description: "We look after dogs",
     long_description: "We look after dogs long_desc",
-    qr_img_url: "placeholder"
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
+    qr_img_url: "https://i.imgur.com/M6yBwxS.png?1"
   },
   {
     id: 2,
@@ -55,7 +57,8 @@ const charities = [
     country: "Canada",
     short_description: "We deliver food to seniors",
     long_description: "We deliver food to seniors long_desc",
-    qr_img_url: "placeholder",
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
+    qr_img_url: "https://i.imgur.com/M6yBwxS.png?1",
   }
 ]
 
@@ -90,7 +93,14 @@ storiesOf("Components", module)
   .add("Footer", () => <Footer/>)
   .add("Header", () => <Header/>)
   .add("Landing", () => <Landing/>)
-  .add("Make_Donation", () => <Donation/>)
-  .add("Search", () => <Search/>)
+  .add("Make Donation", () => <Donation
+    charity = { charities[0] }
+    />
+  )
+  .add("Search Charities", () => <SearchCharities
+    charities = {charities}
+    />
+  )
+  .add("Search Donations", () => <SearchDonations/>)
   .add("Signup", () => <Signup/>)
   .add("Thank", () => <Thank/>)

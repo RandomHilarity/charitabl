@@ -1,38 +1,45 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 200,
-    minHeight: 200,
+    maxWidth: 345,
+    textAlign: 'center',
   },
-  text: {
-    fontSize: 14,
-    textAlign: "center",
-    marginBottom: 12
+  root: {
+    justifyContent: 'center'
   },
 });
 
-const action = function() {
-  console.log("Pressed a button! Placeholder")
-};
-
-export default function SimpleCard() {
+export default function Donor() {
   const classes = useStyles();
 
   return (
-    <Card className={classes.text} onClick={()=>action()}>
-      <CardActionArea>
+    <Card className={classes.card}>
         <CardContent>
-          <Typography className="h3" color="textSecondary">
-          I'm a donator!
+          <Typography gutterBottom variant="h5" component="h2">
+            Donors
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Placeholder
           </Typography>
         </CardContent>
-      </CardActionArea>
+      <CardActions classes={ {root: classes.root} }>
+        <Button className="button" size="small" color="primary">
+          Login
+        </Button>
+        <Typography>
+            |
+        </Typography>
+        <Button className="button" size="small" color="primary">
+          Signup
+        </Button>
+      </CardActions>
     </Card>
   );
 }
