@@ -36,10 +36,14 @@ const useStyles = makeStyles(theme => ({
   },
   formField: {
     padding: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
   }
 }));
 
-export default function Donate(props) {
+export
+ default function Donate(props) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -52,7 +56,7 @@ export default function Donate(props) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="s">
       <CssBaseline />
       <div>
         <img className={classes.media} src={props.charity.logo} alt={props.charity.name} />
@@ -111,6 +115,15 @@ export default function Donate(props) {
                 ))}
               </TextField>
             </Grid>
+            <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Donate
+          </Button>
           </Grid>
         </form>
         </div>

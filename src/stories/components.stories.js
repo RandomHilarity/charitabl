@@ -11,6 +11,7 @@ import SearchCharities from "../components/search_charities"
 import SearchDonations from "../components/search_donations"
 import Signup from "../components/signup"
 import Thank from "../components/thank"
+import User from "../components/user"
 
 const users = [
   {
@@ -71,18 +72,45 @@ const donations = [
     employee_id: 1
   },
   {
-    id: 1,
+    id: 2,
     amount_cents: 4000,
-    user_id: 1,
-    charity_id: 2,
+    user_id: 2,
+    charity_id: 1,
     employee_id: 1
+  },
+]
+
+const donationsDisplay = [
+  {
+    id: 1,
+    amount_cents: 5000,
+    first_name: "Mickey",
+    last_name: "Mouse",
+    charity_id: 1,
+    donated_at: "2019-4-2"
   },
   {
     id: 2,
-    amount_cents: 10000,
-    user_id: 2,
+    amount_cents: 4000,
+    first_name: "Donald",
+    last_name: "Duck",
     charity_id: 1,
-    employee_id: 2
+    donated_at: "2019-4-2"
+  },
+]
+
+const donationsUser = [
+  {
+    id: 1,
+    name: "SlumDogs",
+    donation_cents: 5000,
+    donated_at: "2019-5-1"
+  },
+  {
+    id: 3,
+    name: "Feed Me",
+    donation_cents: 10000,
+    donated_at: "2019-6-2"
   }
 ]
 
@@ -93,14 +121,22 @@ storiesOf("Components", module)
   .add("Footer", () => <Footer/>)
   .add("Header", () => <Header/>)
   .add("Landing", () => <Landing/>)
+  .add("User", () => <User
+    donations={ donationsUser }
+    />
+  )
   .add("Make Donation", () => <Donation
-    charity = { charities[0] }
+    charity={ charities[0] }
     />
   )
   .add("Search Charities", () => <SearchCharities
-    charities = {charities}
+    charities={ charities }
     />
   )
-  .add("Search Donations", () => <SearchDonations/>)
+  .add("Search Donations", () => <SearchDonations
+    donations={ donationsDisplay }
+     
+    />
+  )
   .add("Signup", () => <Signup/>)
   .add("Thank", () => <Thank/>)
