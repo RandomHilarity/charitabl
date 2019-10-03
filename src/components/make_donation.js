@@ -42,8 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export
- default function Donate(props) {
+export default function Donate(props) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -56,7 +55,7 @@ export
   };
 
   return (
-    <Container component="main" maxWidth="s">
+    <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div>
         <img className={classes.media} src={props.charity.logo} alt={props.charity.name} />

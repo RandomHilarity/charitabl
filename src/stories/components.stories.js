@@ -1,19 +1,18 @@
 import React from 'react';
 import { storiesOf } from "@storybook/react";
-import { action } from '@storybook/addon-actions';
 
 import App from "../App"
 import Footer from "../components/layouts/footer"
 import Header from "../components/layouts/header"
 import Landing from "../components/landing"
-import Donation from "../components/make_donation"
+import Donate from "../components/make_donation"
 import SearchCharities from "../components/search_charities"
 import SearchDonations from "../components/search_donations"
-import Signup from "../components/signup"
+import UserSignup from "../components/user_signup"
 import Thank from "../components/thank"
 import User from "../components/user"
 
-const users = [
+/* const users = [
   {
     id: 1,
     first_name: "Mickey",
@@ -34,7 +33,7 @@ const users = [
     country: "Canada",
     email: "donaldduck@mail.com"
   }
-]
+] */
 
 const charities = [
   {
@@ -63,7 +62,7 @@ const charities = [
   }
 ]
 
-const donations = [
+/* const donations = [
   {
     id: 1,
     amount_cents: 5000,
@@ -78,7 +77,7 @@ const donations = [
     charity_id: 1,
     employee_id: 1
   },
-]
+] */
 
 const donationsDisplay = [
   {
@@ -103,14 +102,16 @@ const donationsUser = [
   {
     id: 1,
     name: "SlumDogs",
-    donation_cents: 5000,
-    donated_at: "2019-5-1"
+    amount_cents: 5000,
+    donated_at: "2019-5-1",
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
   },
   {
     id: 3,
     name: "Feed Me",
-    donation_cents: 10000,
-    donated_at: "2019-6-2"
+    amount_cents: 10000,
+    donated_at: "2019-6-2",
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
   }
 ]
 
@@ -125,7 +126,7 @@ storiesOf("Components", module)
     donations={ donationsUser }
     />
   )
-  .add("Make Donation", () => <Donation
+  .add("Make Donation", () => <Donate
     charity={ charities[0] }
     />
   )
@@ -138,5 +139,5 @@ storiesOf("Components", module)
      
     />
   )
-  .add("Signup", () => <Signup/>)
+  .add("User Signup", () => <UserSignup/>)
   .add("Thank", () => <Thank/>)

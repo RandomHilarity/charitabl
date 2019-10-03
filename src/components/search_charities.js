@@ -5,6 +5,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   card: {
@@ -31,7 +32,7 @@ export default function Search(props) {
   const charities = props.charities.map(charity => {
     return (
       <Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea onClick={props.onSelectCharity}>
           <div className={classes.details}>
             <CardMedia className={classes.media}>
               <img src={charity.logo} alt={charity.name} />

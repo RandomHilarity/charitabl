@@ -34,22 +34,22 @@ export default function SearchDonations(props) {
     totalDonations += donation.amount_cents
 
     return (
-      <Card className={classes.card} maxWidth="sm">
+      <Card className={classes.card}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={4}>
-                <Typography component="h5" variant="h5" fullWidth>
+                <Typography component="h5" variant="h5">
                   {donation.first_name} {donation.last_name}
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={4}>
-                <Typography component="p" fullWidth>
+                <Typography component="p">
                   {donation.amount_cents}
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={4}>
-                <Typography component="p" fullWidth>
+                <Typography component="p">
                   {donation.donated_at}
                 </Typography>
               </Grid>

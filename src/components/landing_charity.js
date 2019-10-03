@@ -16,27 +16,37 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Donor() {
+export default function Donor({ transition }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.card}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Charities
+            Donors
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Placeholder
           </Typography>
         </CardContent>
       <CardActions classes={ {root: classes.root} }>
-        <Button className="button" size="small" color="primary">
-          Login
+        <Button
+          className="button"
+          size="small"
+          color="primary"
+          //onClick={() => transition("CHARITY_LOGIN")}  // NOT CURRENTLY IMPLEMENTED
+          >
+          LOGIN
         </Button>
         <Typography>
             |
         </Typography>
-        <Button className="button" size="small" color="primary">
+        <Button
+          className="button"
+          size="small"
+          color="primary"
+          //onClick={() => transition("CHARITY_SIGNUP")}  // NOT CURRENTLY IMPLEMENTED
+          >
           Signup
         </Button>
       </CardActions>

@@ -26,7 +26,7 @@ export default function Thank(props) {
     <section className={classes.main}>
       <Typography className={classes.title}>Thank you for your donation!</Typography>
       <Typography className={classes.subtext}>You've made the world a better place.</Typography>
-      <Button onPress={() => this.props.navigation.navigate('User')}>
+      <Button onClick={props.toUserPage}>
         Continue
         </Button>
     </section>

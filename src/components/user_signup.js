@@ -55,7 +55,7 @@ function Copyright() {
   );
 }
 
-export default function SignUp() {
+export default function SignUp({ transition }) {
   const classes = useStyles();
 
   const [values, setValues] = React.useState({
@@ -185,7 +185,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link onClick={() => transition("USER_LOGIN")} variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
