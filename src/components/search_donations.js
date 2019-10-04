@@ -9,19 +9,20 @@ const useStyles = makeStyles({
   card: {
     maxWidth: 600,
     display: "flex",
-    margin: 5
-  },
-  media: {
-    width: 100,
-    height: 100
+    margin: 5,
+    minHeight: "5vh",
   },
   details: {
     display: "flex",
     flexDirection: "row",
     width: "100%",
   },
+  content: {
+    width: "100%",
+  },
   text: {
-    display: "flex"
+    textAlign: "center",
+    verticalAlign: "center",
   }
 });
 
@@ -39,17 +40,17 @@ export default function SearchDonations(props) {
           <CardContent className={classes.content}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={4}>
-                <Typography component="h5" variant="h5">
+                <Typography  component="h5" variant="h5">
                   {donation.first_name} {donation.last_name}
                 </Typography>
               </Grid>
-              <Grid item xs={6} sm={4}>
-                <Typography component="p">
-                  {donation.amount_cents}
+              <Grid className={classes.text} item xs={6} sm={4}>
+                <Typography>
+                  ${donation.amount_cents /100}
                 </Typography>
               </Grid>
-              <Grid item xs={6} sm={4}>
-                <Typography component="p">
+              <Grid className={classes.text} item xs={6} sm={4}>
+                <Typography>
                   {donation.donated_at}
                 </Typography>
               </Grid>
@@ -67,7 +68,7 @@ export default function SearchDonations(props) {
       </Typography>
       <ul>{donations}</ul>
       <Typography component="h5" variant="h5">
-          Total Donations: {totalDonations}
+          Total Donations: ${totalDonations /100}
       </Typography>
     </section>
   );

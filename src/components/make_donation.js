@@ -10,6 +10,8 @@ import Switch from "@material-ui/core/Switch";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
 
+import { CardElement, injectStripe} from 'react-stripe-elements';
+
 const frequency = [
   { value: "D", label: "Daily" },
   { value: "W", label: "Weekly" },
@@ -54,6 +56,9 @@ export default function Donate(props) {
     setState({ ...state, [name]: event.target.checked });
   };
 
+  //const stripe = Stripe(ENV['STRIPE_PUBLISHABLE_KEY']);
+  //const elements = stripe.elements();
+
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
@@ -77,7 +82,7 @@ export default function Donate(props) {
               autoFocus
             />
           </Grid>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} align="center" verticl>
             <Grid item xs={4}>
               <FormControlLabel
                 control={
@@ -120,7 +125,7 @@ export default function Donate(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-          >
+            >
             Donate
           </Button>
           </Grid>

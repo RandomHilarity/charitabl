@@ -4,7 +4,7 @@ import reducer from "../reducers/app_reducer"
 
 export default function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, {
-    //user: "1",
+    user: "1",
     charity: "",
     donations: [],
   });

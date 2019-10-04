@@ -7,12 +7,17 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider"
+import Container from "@material-ui/core/Container"
+import Box from "@material-ui/core/Box"
 
 const useStyles = makeStyles({
   card: {
     maxWidth: 600,
     display: "flex",
-    margin: 5
+    margin: 5,
+    minWidth: "xs",
+    justifyContent: "center",
   },
   media: {
     width: 100,
@@ -22,12 +27,28 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row"
   },
-  text: {
-    display: "flex"
+  button: {
+    margin: 5,
+    display: "flex",
+    minWidth: 100,
   },
   content: {
     width: "100%",
+    justifyContent: 'center',
   },
+  buttonContainer: {
+    justifyContent: 'center',
+    padding: 20,
+  },
+  textContainer: {
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  mainContainer: {
+    justifyContent: 'center',
+    padding: 20,
+    maxWidth: "md",
+  }
 });
 
 export default function User(props) {
@@ -56,13 +77,19 @@ export default function User(props) {
               </CardMedia>
               <CardContent className={classes.content}>
                 <Grid className={classes.content} container spacing={3}>
-                  <Typography xs={4}>
+                  <Grid item>
+                    <Typography xs={12} sm={8} content="h5" variant="h5">
                     {donation.name}
                   </Typography>
-                  <Typography xs={4}>
+                  </Grid>
+                  <Grid item>
+                  <Typography xs={6} sm={2}>
                   ${donation.amount_cents / 100}
                   </Typography>
-                  <Typography xs={4}>{donation.donated_at}</Typography>
+                  </Grid>
+                  <Grid item>
+                  <Typography xs={6} sm={2}>{donation.donated_at}</Typography>
+                </Grid>
                 </Grid>
               </CardContent>
             </div>
@@ -73,18 +100,19 @@ export default function User(props) {
   });
 
   return (
-    <section className="main">
-      <Typography component="h4" variant="h4">
-        Charities
-      </Typography>
+    <Container className="mainContainer">
+      <Box className={classes.textContainer}>
       <Typography>Donations This Year: ${donationsForYear /100}</Typography>
       <Typography>Total Donations: ${totalDonations /100}</Typography>
-      <Grid container spacing={2} justifyContent='center'>
-        <Button onClick={props.onSearch} >Search</Button>
-        <Button onClick={props.onScan}>Scan</Button>
+      </Box>
+      <Divider variant="middle" />
+      <Grid container spacing={2} className={classes.buttonContainer}>
+        <Button className={classes.button} variant="contained" color="secondary" onClick={props.onSearch} >Search</Button>
+        <Button className={classes.button} variant="contained" color="secondary" onClick={props.onScan}>Scan</Button>
       </Grid>
+      <Divider variant="middle" />
       <Typography type="h5" variant="h5">Your Donations</Typography>
       <ul>{charities}</ul>
-    </section>
+    </Container>
   );
 }

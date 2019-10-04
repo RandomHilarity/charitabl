@@ -13,6 +13,7 @@ import User from "./components/user";
 
 import useApplicationData from "./hooks/useApplicationData";
 
+import Container from "@material-ui/core/Container"
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -58,8 +59,11 @@ function App() {
   const { mode, transition, back } = visualMode;
   // update QR and QR_NEXT mode and states once QR added
   return (
+    
     <ThemeProvider theme={theme}>
+
       <Header />
+      <Container maxWidth='lg'>
       {mode === ROOT && <Landing {...visualMode} />}
       {mode === USER && <User 
         donations={donations}
@@ -77,7 +81,9 @@ function App() {
       {mode === THANK && <Thank 
         toUserPage={() => transition("USER")}
         />}
+             </Container>
       <Footer />
+ 
     </ThemeProvider>
   );
 }
