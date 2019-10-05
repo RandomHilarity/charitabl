@@ -30,12 +30,12 @@ export default function SearchDonations(props) {
   const classes = useStyles();
   let totalDonations = 0;
 
-  const donations = props.donations.map(donation => {
+  const donations = props.donations.map((donation, index) => {
 
     totalDonations += donation.amount_cents
 
     return (
-      <Card className={classes.card}>
+      <Card className={classes.card} id={index}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Grid container spacing={3}>

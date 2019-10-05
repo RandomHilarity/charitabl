@@ -77,7 +77,7 @@ export default function Donate(props) {
               autoFocus
             />
           </Grid>
-          <Grid container spacing={2} align="center" verticl>
+          <Grid container spacing={2} align="center">
             <Grid item xs={4}>
               <FormControlLabel
                 control={

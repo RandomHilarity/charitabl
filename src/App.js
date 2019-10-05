@@ -55,7 +55,8 @@ const THANK = "THANK";
 
 function App() {
   const {
-    state: { user, donations, charities },
+    state: { user, donations, charities, charity },
+    setCharity,
     handleSignUp,
     handleLogin 
   } = useApplicationData();
@@ -63,11 +64,17 @@ function App() {
   const visualMode = useVisualMode(user && user.id ? "USER" : "ROOT");
   const { mode, transition, back } = visualMode;
 
+  console.log(mode, "MODE");
+  console.log(user, "user state")
+  console.log(donations, "donation state")
+  console.log(charities, "charities")
+  console.log(charity, "charity state")
+
   if (mode === "ROOT" && user && user.id) transition("USER");
   // update QR and QR_NEXT mode and states once QR added
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+      <Header back={() => back()} />
       <Container maxWidth="lg">
         {mode === ROOT && <Landing {...visualMode} />}
         {mode === USER_SIGNUP && <UserSignup {...visualMode} onSubmit={handleSignUp} user={user}/>}
@@ -75,19 +82,23 @@ function App() {
         {mode === USER && (
           <User
             donations={donations}
-            onSearch={() => transition("SEARCH_CHARITIES")}
+            onSearch={() => transition("SEARCH_CHARITY")}
             onScan={() => transition("QR")}
           />
         )}        
         {mode === SEARCH_CHARITY && (
           <SearchCharities
             charities={charities}
+            setCharity={setCharity}
             onSelectCharity={() => transition("DONATE")}
           />
         )}
         {mode === "QR"}
         {mode === "QR_NEXT"}
-        {mode === DONATE && <Donate {...visualMode} toThankPage={() => transition("THANK")}/>}
+        {mode === DONATE && <Donate 
+          {...visualMode} 
+          charity={charity}
+          toThankPage={() => transition("THANK")}/>}
         {mode === THANK && <Thank toUserPage={() => transition("USER")} />}
       </Container>
       <Footer />

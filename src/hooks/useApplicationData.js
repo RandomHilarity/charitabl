@@ -6,22 +6,25 @@ import config from '../config';
 export default function useApplicationData() {
   const [state, dispatch] = useReducer(reducer, {
     user: {},
-    charity: [],
+    charity: {},
+    charities: [],
     donations: [],
   });
 
   const setUser = user => dispatch({ type: "SET_USER", user });
-  console.log(state.user.id, "state.user.id in useApplicationData")
+  const setCharity = charity => dispatch({ type: "SET_CHARITY", charity });
+
+  //console.log(state.user.id, "state.user.id in useApplicationData")
   // gets data from db and sets state
   useEffect(() => {
     if (!state.user.id) return;
-    console.log(state.user.id, "state.user.id before Promises")
+    //console.log(state.user.id, "state.user.id before Promises")
     Promise.all([
       axios.get(`${config.API_PATH}/api/users/${state.user.id}/donations`),
-      axios.get(`${config.API_PATH}/api/charities`)
+      axios.get(`${config.API_PATH}/api/charities/all`)
     ]).then(all => {
-      console.log(all[0].data, "should be Donations")
-      console.log(state.user.id, "state.user.id before Dispatch")
+      //console.log(all[0].data, "should be Donations")
+      //console.log(state.user.id, "state.user.id before Dispatch")
       dispatch({
         type: "SET_APPLICATION_DATA",
         donations: all[0].data,
@@ -51,5 +54,5 @@ export default function useApplicationData() {
       return;
     })
   }
-  return { state, setUser, makeDonation, handleSignUp, handleLogin };
+  return { state, setCharity, makeDonation, handleSignUp, handleLogin };
 }

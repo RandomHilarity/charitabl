@@ -66,7 +66,6 @@ export default function User(props) {
       donationsForYear += donation.amount_cents;
     }
 
-    console.log(donation.id, "donation.id");
     return (
       <section key={index}>
         <Card className={classes.card}>

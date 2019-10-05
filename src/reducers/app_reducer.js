@@ -3,6 +3,9 @@ export default function reducer(state, action) {
     case "SET_USER":
       console.log(action.user, "action.user")
       return { ...state, user: action.user };
+    case "SET_CHARITY":
+      console.log(action.charity, "action.charity")
+      return { ...state, charity: action.charity};
     case "SET_APPLICATION_DATA":
       return {
         ...state,

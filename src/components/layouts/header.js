@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({ back }) {
   const classes = useStyles();
 
   return (
@@ -28,7 +28,9 @@ export default function ButtonAppBar() {
           <Typography variant="h3" className={classes.title}>
             Charitabl
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button 
+          onClick={() => back()}
+          color="inherit">Back</Button>
         </Toolbar>
       </AppBar>
     </div>
