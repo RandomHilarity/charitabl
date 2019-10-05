@@ -42,8 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export
- default function Donate(props) {
+export default function Donate(props) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
@@ -56,7 +55,7 @@ export
   };
 
   return (
-    <Container component="main" maxWidth="s">
+    <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div>
         <img className={classes.media} src={props.charity.logo} alt={props.charity.name} />
@@ -78,7 +77,7 @@ export
               autoFocus
             />
           </Grid>
-          <Grid container spacing={2}>
+          <Grid container spacing={2} align="center">
             <Grid item xs={4}>
               <FormControlLabel
                 control={
@@ -121,7 +120,7 @@ export
             variant="contained"
             color="primary"
             className={classes.submit}
-          >
+            >
             Donate
           </Button>
           </Grid>

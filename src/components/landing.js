@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container'
 
 import Donator from './landing_donator'
 import Charity from './landing_charity'
@@ -11,32 +11,31 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     padding: theme.spacing(5),
   },
-  paper: {
+  container: {
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
 }));
 
-export default function CenteredGrid() {
+export default function Landing(props) {
   const classes = useStyles();
 
   return (
-    <div class="main">
-      <section>
+    <Container component="main" maxWidth="md">
         <p>
         Charitabl is dedicated to making donations as quick and secure as possible.  So help can get to those that need it.
         </p>
-      </section>
-      <div className={classes.root} class="navy">
+
+      <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Donator/>
+            <Donator {...props}/>
           </Grid>
           <Grid item xs={6}>
-            <Charity/>
+            <Charity {...props}/>
           </Grid>
         </Grid>
       </div>
-    </div>
+    </Container>
   )}

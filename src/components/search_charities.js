@@ -25,13 +25,20 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Search(props) {
+export default function SearchCharities(props) {
   const classes = useStyles();
 
-  const charities = props.charities.map(charity => {
+
+
+  const charities = props.charities.map((charity,index) => {
+    const setCharityAndTransition = function() {
+      props.setCharity(charity)
+      props.onSelectCharity()
+    }
+
     return (
-      <Card className={classes.card}>
-        <CardActionArea>
+      <Card className={classes.card} key={index}>
+        <CardActionArea onClick={ setCharityAndTransition }>
           <div className={classes.details}>
             <CardMedia className={classes.media}>
               <img src={charity.logo} alt={charity.name} />
@@ -40,7 +47,7 @@ export default function Search(props) {
               <Typography component="h5" variant="h5">
                 {charity.name}
               </Typography>
-              <Typography component="p">{charity.long_description}</Typography>
+              <Typography component="p">{charity.short_description}</Typography>
             </CardContent>
           </div>
         </CardActionArea>
@@ -51,7 +58,7 @@ export default function Search(props) {
   return (
     <section>
       <Typography component="h4" variant="h4">Charities</Typography>
-      <ul>{charities}</ul>
+      {charities}
     </section>
   );
 }

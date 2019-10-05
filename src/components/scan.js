@@ -15,8 +15,11 @@ const useStyles = makeStyles(theme => ({
   },
   subtext: {
     margin: theme.spacing(3, 0, 2)
+
   }
 }));
+
+//PLACEHOLDER FOR SCAN COMPONENT
 
 export default function Thank(props) {
 
@@ -24,6 +27,16 @@ export default function Thank(props) {
 
   return (
     <section className={classes.main}>
+      <label className="qrcode-text-btn">
+      <input 
+        type="file"
+        accept="image/*"
+        capture="environment"
+        tabindex="-1">
+
+      </input>
+      </label>
+      
       <Typography className={classes.title}>Thank you for your donation!</Typography>
       <Typography className={classes.subtext}>You've made the world a better place.</Typography>
       <Button onClick={props.toUserPage}>

@@ -1,22 +1,22 @@
 import React from 'react';
 import { storiesOf } from "@storybook/react";
-import { action } from '@storybook/addon-actions';
 
 import App from "../App"
 import Footer from "../components/layouts/footer"
 import Header from "../components/layouts/header"
 import Landing from "../components/landing"
-import Donation from "../components/make_donation"
+import Donate from "../components/make_donation"
 import SearchCharities from "../components/search_charities"
 import SearchDonations from "../components/search_donations"
-import Signup from "../components/signup"
+import UserSignup from "../components/user_signup"
 import Thank from "../components/thank"
 import User from "../components/user"
+import UserLogin from "../components/user_login"
 
-const users = [
+/* const users = [
   {
     id: 1,
-    first_name: "Mickey",
+    firstName: "Mickey",
     last_name: "Mouse",
     address: "100 Minnie Street",
     city: "Calgary",
@@ -26,7 +26,7 @@ const users = [
   },
   {
     id: 2,
-    first_name: "Donald",
+    firstName: "Donald",
     last_name: "Duck",
     address: "200 Daisy Street",
     city: "Toronto",
@@ -34,7 +34,7 @@ const users = [
     country: "Canada",
     email: "donaldduck@mail.com"
   }
-]
+] */
 
 const charities = [
   {
@@ -63,7 +63,7 @@ const charities = [
   }
 ]
 
-const donations = [
+/* const donations = [
   {
     id: 1,
     amount_cents: 5000,
@@ -78,13 +78,13 @@ const donations = [
     charity_id: 1,
     employee_id: 1
   },
-]
+] */
 
 const donationsDisplay = [
   {
     id: 1,
     amount_cents: 5000,
-    first_name: "Mickey",
+    firstName: "Mickey",
     last_name: "Mouse",
     charity_id: 1,
     donated_at: "2019-4-2"
@@ -92,7 +92,7 @@ const donationsDisplay = [
   {
     id: 2,
     amount_cents: 4000,
-    first_name: "Donald",
+    firstName: "Donald",
     last_name: "Duck",
     charity_id: 1,
     donated_at: "2019-4-2"
@@ -103,14 +103,16 @@ const donationsUser = [
   {
     id: 1,
     name: "SlumDogs",
-    donation_cents: 5000,
-    donated_at: "2019-5-1"
+    amount_cents: 5000,
+    donated_at: "2019-5-1",
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
   },
   {
     id: 3,
     name: "Feed Me",
-    donation_cents: 10000,
-    donated_at: "2019-6-2"
+    amount_cents: 10000,
+    donated_at: "2019-6-2",
+    logo: "https://i.imgur.com/2E9aJiw.jpg",
   }
 ]
 
@@ -125,7 +127,7 @@ storiesOf("Components", module)
     donations={ donationsUser }
     />
   )
-  .add("Make Donation", () => <Donation
+  .add("Make Donation", () => <Donate
     charity={ charities[0] }
     />
   )
@@ -138,5 +140,6 @@ storiesOf("Components", module)
      
     />
   )
-  .add("Signup", () => <Signup/>)
+  .add("User Login", () => <UserLogin/>)
+  .add("User Signup", () => <UserSignup/>)
   .add("Thank", () => <Thank/>)
