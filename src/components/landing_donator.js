@@ -34,7 +34,7 @@ export default function Donor({ transition }) {
           className="button"
           size="small"
           color="primary"
-          // onClick={() => transition("USER_LOGIN")}  // LOGIN NOT CURRENTLY IMPLEMENTED
+          onClick={() => transition("USER_LOGIN")}
           >
           LOGIN
         </Button>

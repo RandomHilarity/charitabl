@@ -41,7 +41,7 @@ export default function SearchDonations(props) {
             <Grid container spacing={3}>
               <Grid item xs={12} sm={4}>
                 <Typography  component="h5" variant="h5">
-                  {donation.first_name} {donation.last_name}
+                  {donation.firstName} {donation.lastName}
                 </Typography>
               </Grid>
               <Grid className={classes.text} item xs={6} sm={4}>

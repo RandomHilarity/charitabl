@@ -11,11 +11,12 @@ import SearchDonations from "../components/search_donations"
 import UserSignup from "../components/user_signup"
 import Thank from "../components/thank"
 import User from "../components/user"
+import UserLogin from "../components/user_login"
 
 /* const users = [
   {
     id: 1,
-    first_name: "Mickey",
+    firstName: "Mickey",
     last_name: "Mouse",
     address: "100 Minnie Street",
     city: "Calgary",
@@ -25,7 +26,7 @@ import User from "../components/user"
   },
   {
     id: 2,
-    first_name: "Donald",
+    firstName: "Donald",
     last_name: "Duck",
     address: "200 Daisy Street",
     city: "Toronto",
@@ -83,7 +84,7 @@ const donationsDisplay = [
   {
     id: 1,
     amount_cents: 5000,
-    first_name: "Mickey",
+    firstName: "Mickey",
     last_name: "Mouse",
     charity_id: 1,
     donated_at: "2019-4-2"
@@ -91,7 +92,7 @@ const donationsDisplay = [
   {
     id: 2,
     amount_cents: 4000,
-    first_name: "Donald",
+    firstName: "Donald",
     last_name: "Duck",
     charity_id: 1,
     donated_at: "2019-4-2"
@@ -139,5 +140,6 @@ storiesOf("Components", module)
      
     />
   )
+  .add("User Login", () => <UserLogin/>)
   .add("User Signup", () => <UserSignup/>)
   .add("Thank", () => <Thank/>)

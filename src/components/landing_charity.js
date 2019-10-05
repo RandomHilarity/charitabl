@@ -23,7 +23,7 @@ export default function Donor({ transition }) {
     <Card className={classes.card}>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Donors
+            Charities
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             Placeholder

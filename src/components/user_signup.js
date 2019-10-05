@@ -46,7 +46,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://amazing-poitras-93d932.netlify.com/">
+      <Link color="inherit" href="https://charitabl.netlify.com/">
         Charitabl
       </Link>{" "}
       {new Date().getFullYear()}
@@ -55,16 +55,23 @@ function Copyright() {
   );
 }
 
-export default function SignUp({ transition }) {
+export default function SignUp({ transition, onSubmit, user }) {
   const classes = useStyles();
 
   const [values, setValues] = React.useState({
-    firstName: "", // change values to props
-    lastName: "",
+    first_name: "",
+    last_name: "",
     address: "",
     city: "",
-    province: ""
+    province: "",
+    email: "",
+    password: ""
   });
+
+  if (user && user.id) {
+    transition("USER");
+    return null;
+  }
 
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
@@ -75,9 +82,13 @@ export default function SignUp({ transition }) {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign Up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={e => (e.preventDefault(), onSubmit(values))}
+        >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -89,6 +100,7 @@ export default function SignUp({ transition }) {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleChange("first_name")}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -100,6 +112,7 @@ export default function SignUp({ transition }) {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleChange("last_name")}
               />
             </Grid>
             <Grid item xs={12}>
@@ -111,6 +124,7 @@ export default function SignUp({ transition }) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange("email")}
               />
             </Grid>
             <Grid item xs={12}>
@@ -123,6 +137,7 @@ export default function SignUp({ transition }) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange("password")}
               />
             </Grid>
             <Grid item xs={12}>
@@ -135,6 +150,7 @@ export default function SignUp({ transition }) {
                 type="address"
                 id="address"
                 autoComplete="current-address"
+                onChange={handleChange("address")}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -147,6 +163,7 @@ export default function SignUp({ transition }) {
                 id="city"
                 label="City"
                 autoFocus
+                onChange={handleChange("city")}
               />
             </Grid>
             <Grid item xs={12} sm={6}>

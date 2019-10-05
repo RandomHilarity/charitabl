@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
@@ -53,13 +52,13 @@ const useStyles = makeStyles({
 
 export default function User(props) {
   const classes = useStyles();
-
+  
   let totalDonations = 0;
   let donationsForYear = 0;
   const date = new Date();
   const year = date.getFullYear().toString();
   
-  const charities = props.donations.map(donation => {
+  const charities = props.donations.map((donation, index) => {
     
     totalDonations += donation.amount_cents;
 
@@ -67,10 +66,10 @@ export default function User(props) {
       donationsForYear += donation.amount_cents;
     }
 
+    console.log(donation.id, "donation.id");
     return (
-      <main>
+      <section key={index}>
         <Card className={classes.card}>
-          <CardActionArea>
             <div className={classes.details}>
               <CardMedia className={classes.media}>
                 <img src={donation.logo} alt={donation.name} />
@@ -88,14 +87,13 @@ export default function User(props) {
                   </Typography>
                   </Grid>
                   <Grid item>
-                  <Typography xs={6} sm={2}>{donation.donated_at}</Typography>
+                  <Typography xs={6} sm={2}>{donation.donated_at.substring(0,10)}</Typography>
                 </Grid>
                 </Grid>
               </CardContent>
             </div>
-          </CardActionArea>
         </Card>
-      </main>
+      </section>
     );
   });
 
@@ -112,7 +110,7 @@ export default function User(props) {
       </Grid>
       <Divider variant="middle" />
       <Typography type="h5" variant="h5">Your Donations</Typography>
-      <ul>{charities}</ul>
+      {charities}
     </Container>
   );
 }
