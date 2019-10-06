@@ -12,6 +12,7 @@ import UserSignup from "../components/user_signup"
 import Thank from "../components/thank"
 import User from "../components/user"
 import UserLogin from "../components/user_login"
+import Scanner from "../components/scan"
 
 /* const users = [
   {
@@ -143,3 +144,6 @@ storiesOf("Components", module)
   .add("User Login", () => <UserLogin/>)
   .add("User Signup", () => <UserSignup/>)
   .add("Thank", () => <Thank/>)
+
+  storiesOf("Scanner", module)
+    .add("Scan", () => <Scanner/>)

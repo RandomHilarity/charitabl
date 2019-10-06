@@ -58,10 +58,11 @@ function App() {
     state: { user, donations, charities, charity },
     setCharity,
     handleSignUp,
-    handleLogin 
+    handleLogin,
+    makeDonation 
   } = useApplicationData();
 
-  const visualMode = useVisualMode(user && user.id ? "USER" : "ROOT");
+  const visualMode = useVisualMode("ROOT")//user && user.id ? "USER" : "ROOT");
   const { mode, transition, back } = visualMode;
 
   console.log(mode, "MODE");
@@ -98,6 +99,7 @@ function App() {
         {mode === DONATE && <Donate 
           {...visualMode} 
           charity={charity}
+          makeDonation={makeDonation}
           toThankPage={() => transition("THANK")}/>}
         {mode === THANK && <Thank toUserPage={() => transition("USER")} />}
       </Container>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/scan.css"
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -27,21 +28,22 @@ export default function Thank(props) {
 
   return (
     <section className={classes.main}>
+      <span>
+      <input type="text" className="qrcode.text"/>
       <label className="qrcode-text-btn">
       <input 
         type="file"
         accept="image/*"
         capture="environment"
-        tabindex="-1">
-
-      </input>
+        tabindex="-1"/>
       </label>
+      </span>
       
-      <Typography className={classes.title}>Thank you for your donation!</Typography>
+{/*       <Typography className={classes.title}>Thank you for your donation!</Typography>
       <Typography className={classes.subtext}>You've made the world a better place.</Typography>
       <Button onClick={props.toUserPage}>
         Continue
-        </Button>
+        </Button> */}
     </section>
   );
 }

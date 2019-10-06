@@ -33,9 +33,10 @@ export default function useApplicationData() {
     });
   }, [state.user.id]);
 
-  function makeDonation(userId, charityId, amountCents) {
-    return axios.put(`${config.API_PATH}/users/${userId}/charities/${charityId}/${amountCents}`).then(res => {
-      dispatch({ type: "MAKE_DONATION", userId});
+  function makeDonation(chargeData) {
+    console.log(chargeData, "chargeData");
+    return axios.put(`http://localhost:8000/`, chargeData).then(res => {
+      dispatch({ type: "MAKE_DONATION", res}); // needs to set mode to USER, (`${config.API_PATH}/api/payment`, chargeData)
     });
   }
 

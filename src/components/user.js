@@ -12,7 +12,7 @@ import Box from "@material-ui/core/Box"
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 600,
+    maxWidth: "lg",
     display: "flex",
     margin: 5,
     minWidth: "xs",
@@ -32,7 +32,8 @@ const useStyles = makeStyles({
     minWidth: 100,
   },
   content: {
-    width: "100%",
+
+    width: "600",
     justifyContent: 'center',
   },
   buttonContainer: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles({
   mainContainer: {
     justifyContent: 'center',
     padding: 20,
-    maxWidth: "md",
+    maxWidth: "lg",
   }
 });
 
@@ -76,17 +77,17 @@ export default function User(props) {
               <CardContent className={classes.content}>
                 <Grid className={classes.content} container spacing={3}>
                   <Grid item>
-                    <Typography xs={12} sm={8} content="h5" variant="h5">
+                    <Typography content="h5" variant="h5">
                     {donation.name}
                   </Typography>
                   </Grid>
                   <Grid item>
-                  <Typography xs={6} sm={2}>
+                  <Typography>
                   ${donation.amount_cents / 100}
                   </Typography>
                   </Grid>
                   <Grid item>
-                  <Typography xs={6} sm={2}>{donation.donated_at.substring(0,10)}</Typography>
+                  <Typography>{donation.donated_at.substring(0,10)}</Typography>
                 </Grid>
                 </Grid>
               </CardContent>

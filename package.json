@@ -9,6 +9,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2",
+    "react-stripe-checkout": "^2.6.3",
     "react-stripe-elements": "^5.0.1"
   },
   "scripts": {

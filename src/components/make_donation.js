@@ -5,18 +5,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import MenuItem from "@material-ui/core/MenuItem";
-import Button from "@material-ui/core/Button";
-
-const frequency = [
-  { value: "D", label: "Daily" },
-  { value: "W", label: "Weekly" },
-  { value: "M", label: "Monthly" },
-  { value: "Q", label: "Quarterly" },
-  { value: "Y", label: "Yearly" }
-];
+import StripeBtn from "../components/stripeBtn";
 
 const useStyles = makeStyles(theme => ({
   details: {
@@ -25,17 +14,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     margin: 5,
+    width: "100%",
   },
   media: {
     width: 100,
     height: 100,
+    marginTop: 20
   },
   form: {
     width: "100%",
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   formField: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(1)
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
@@ -46,25 +37,31 @@ export default function Donate(props) {
   const classes = useStyles();
 
   const [state, setState] = React.useState({
-    checkedRecurring: false,
-    frequency: ""
+    errorMessage: "",
+    amount: "",
   });
 
   const handleChange = name => event => {
     setState({ ...state, [name]: event.target.checked });
   };
 
+  console.log(state.amount, "amount")
+  console.log(props.charity, "charity")
+
   return (
     <Container component="main" maxWidth="sm">
       <CssBaseline />
       <div>
-        <img className={classes.media} src={props.charity.logo} alt={props.charity.name} />
+        <img
+          className={classes.media}
+          src={props.charity.logo}
+          alt={props.charity.name}
+        />
         <Typography component="h4" variant="h4">
           {props.charity.name}
         </Typography>
         <Typography component="p">{props.charity.long_description}</Typography>
         <div className={classes.details}>
-        <form className={classes.form} noValidate>
           <Grid item xs={12}>
             <TextField
               autoComplete="amount"
@@ -75,56 +72,14 @@ export default function Donate(props) {
               id="amount"
               label="Donation Amount"
               autoFocus
+              onChange={handleChange}
             />
           </Grid>
-          <Grid container spacing={2} align="center">
-            <Grid item xs={4}>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={state.checkedRecurring}
-                    onChange={handleChange("checkedRecurring")}
-                    value="checkedRecurring"
-                  />
-                }
-                label="Recurring"
-              />
-            </Grid>
-            <Grid item xs={8}>
-              <TextField
-                autoComplete="frequency"
-                variant="outlined"
-                fullWidth
-                name="frequency"
-                label="Frequency"
-                id="filled-select-frequency"
-                value={state.frequency}
-                onChange={handleChange("frequency")}
-                select
-                SelectProps={{
-                  MenuProps: {
-                    className: classes.menu
-                  }
-                }}
-              >
-                {frequency.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </Grid>
-            <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            >
-            Donate
-          </Button>
-          </Grid>
-        </form>
+          <StripeBtn
+            handleResult={props.makeDonation}
+            amount={state.amount}
+            charity={props.charity}
+          />
         </div>
       </div>
     </Container>
