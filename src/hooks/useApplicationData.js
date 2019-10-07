@@ -14,17 +14,13 @@ export default function useApplicationData() {
   const setUser = user => dispatch({ type: "SET_USER", user });
   const setCharity = charity => dispatch({ type: "SET_CHARITY", charity });
 
-  //console.log(state.user.id, "state.user.id in useApplicationData")
   // gets data from db and sets state
   useEffect(() => {
     if (!state.user.id) return;
-    //console.log(state.user.id, "state.user.id before Promises")
     Promise.all([
       axios.get(`${config.API_PATH}/api/users/${state.user.id}/donations`),
       axios.get(`${config.API_PATH}/api/charities/all`)
     ]).then(all => {
-      //console.log(all[0].data, "should be Donations")
-      //console.log(state.user.id, "state.user.id before Dispatch")
       dispatch({
         type: "SET_APPLICATION_DATA",
         donations: all[0].data,
@@ -35,8 +31,8 @@ export default function useApplicationData() {
 
   function makeDonation(chargeData) {
     console.log(chargeData, "chargeData");
-    return axios.put(`http://localhost:8000/`, chargeData).then(res => {
-      dispatch({ type: "MAKE_DONATION", res}); // needs to set mode to USER, (`${config.API_PATH}/api/payment`, chargeData)
+    return axios.put(`${config.API_PATH}/api/payment`, chargeData).then(res => {
+      dispatch({ type: "MAKE_DONATION", res}); // needs to set mode to USER
     });
   }
 

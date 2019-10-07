@@ -42,11 +42,8 @@ export default function Donate(props) {
   });
 
   const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
+    setState({ ...state, [name]: event.target.value });
   };
-
-  console.log(state.amount, "amount")
-  console.log(props.charity, "charity")
 
   return (
     <Container component="main" maxWidth="sm">
@@ -72,7 +69,7 @@ export default function Donate(props) {
               id="amount"
               label="Donation Amount"
               autoFocus
-              onChange={handleChange}
+              onChange={handleChange("amount")}
             />
           </Grid>
           <StripeBtn

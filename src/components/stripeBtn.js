@@ -28,7 +28,6 @@ const createOptions = () => {
 };
 
 class _SplitFieldsForm extends Component {
-
   state = {
     errorMessage: ""
   };
@@ -39,12 +38,19 @@ class _SplitFieldsForm extends Component {
     }
   };
 
+  addDonationParams = function(obj) {
+    obj["amount"] = this.props.amount;
+    obj["charity"] = this.props.charity;
+    return obj;
+  }
+
+  // creates Stripe token, adds Charity and Amount params and sends to db
   handleSubmit = evt => {
     evt.preventDefault();
     if (this.props.stripe) {
-      console.log(this.props.amount, "props.amount");
-      console.log(this.props.charity, "props.charity");
-      this.props.stripe.createToken().then(this.props.handleResult);
+      this.props.stripe.createToken()
+       .then(obj => this.addDonationParams(obj))
+       .then(this.props.handleResult);
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
@@ -103,7 +109,7 @@ export default class SplitFieldsDemo extends Component {
     return (
       <StripeProvider apiKey={"pk_test_wTtHNas8vXXSuUiab1R6wzTb00XhySO3H7"}>
         <Elements>
-          <SplitFieldsForm handleResult={this.props.handleResult} />
+          <SplitFieldsForm handleResult={this.props.handleResult} {...this.props} />
         </Elements>
       </StripeProvider>
     );

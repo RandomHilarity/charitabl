@@ -12,7 +12,7 @@ import UserSignup from "../components/user_signup"
 import Thank from "../components/thank"
 import User from "../components/user"
 import UserLogin from "../components/user_login"
-import Scanner from "../components/scan"
+import Scanner from "../components/scanner"
 
 /* const users = [
   {
