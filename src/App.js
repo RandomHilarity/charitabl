@@ -12,6 +12,7 @@ import UserSignup from "./components/user_signup";
 import Thank from "./components/thank";
 import User from "./components/user";
 import UserLogin from "./components/user_login"
+import Scanner from "./components/scanner"
 
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -52,16 +53,18 @@ const USER_LOGIN = "USER_LOGIN";
 const SEARCH_CHARITY = "SEARCH_CHARITY";
 const DONATE = "DONATE";
 const THANK = "THANK";
+const QR_SCAN = "QR_SCAN"
 
 function App() {
   const {
     state: { user, donations, charities, charity },
     setCharity,
     handleSignUp,
-    handleLogin 
+    handleLogin,
+    makeDonation 
   } = useApplicationData();
 
-  const visualMode = useVisualMode(user && user.id ? "USER" : "ROOT");
+  const visualMode = useVisualMode("ROOT")//user && user.id ? "USER" : "ROOT");
   const { mode, transition, back } = visualMode;
 
   console.log(mode, "MODE");
@@ -83,7 +86,7 @@ function App() {
           <User
             donations={donations}
             onSearch={() => transition("SEARCH_CHARITY")}
-            onScan={() => transition("QR")}
+            onScan={() => transition("QR_SCAN")}
           />
         )}        
         {mode === SEARCH_CHARITY && (
@@ -93,11 +96,17 @@ function App() {
             onSelectCharity={() => transition("DONATE")}
           />
         )}
-        {mode === "QR"}
+        {mode === QR_SCAN && (
+          <Scanner
+            charities={charities}
+            setCharity={setCharity}
+            onSelectCharity={() => transition("DONATE")} />
+        )}
         {mode === "QR_NEXT"}
         {mode === DONATE && <Donate 
           {...visualMode} 
           charity={charity}
+          makeDonation={makeDonation}
           toThankPage={() => transition("THANK")}/>}
         {mode === THANK && <Thank toUserPage={() => transition("USER")} />}
       </Container>
