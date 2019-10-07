@@ -41,6 +41,7 @@ class _SplitFieldsForm extends Component {
   addDonationParams = function(obj) {
     obj["amount"] = this.props.amount;
     obj["charity"] = this.props.charity;
+    obj["user_id"] = this.props.user.id;
     return obj;
   }
 
@@ -50,7 +51,8 @@ class _SplitFieldsForm extends Component {
     if (this.props.stripe) {
       this.props.stripe.createToken()
        .then(obj => this.addDonationParams(obj))
-       .then(this.props.handleResult);
+       .then(this.props.handleResult)
+       .then(this.props.toThankPage)
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }

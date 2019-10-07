@@ -31,9 +31,19 @@ export default function useApplicationData() {
 
   function makeDonation(chargeData) {
     console.log(chargeData, "chargeData");
-    return axios.put(`${config.API_PATH}/api/payment`, chargeData).then(res => {
-      dispatch({ type: "MAKE_DONATION", res}); // needs to set mode to USER
-    });
+    return axios.post(`${config.API_PATH}/api/donation`, chargeData).then(({ data }) => {
+      console.log(data, "data in makeDonation")
+      console.log(data.status, "data.status in makeDonation")
+      if (data.status === "succeeded") {
+        console.log("it succeeded")
+            dispatch({
+              type: "SET_APPLICATION_DATA",
+              donations: [data.donation, ...state.donations]
+            });
+      } else {
+        return;
+      }
+    })
   }
 
   function handleSignUp(userData) {

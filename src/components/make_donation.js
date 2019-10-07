@@ -73,9 +73,11 @@ export default function Donate(props) {
             />
           </Grid>
           <StripeBtn
+            user={props.user}
             handleResult={props.makeDonation}
             amount={state.amount}
             charity={props.charity}
+            toThankPage={props.toThankPage}
           />
         </div>
       </div>

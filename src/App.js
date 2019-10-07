@@ -102,9 +102,9 @@ function App() {
             setCharity={setCharity}
             onSelectCharity={() => transition("DONATE")} />
         )}
-        {mode === "QR_NEXT"}
         {mode === DONATE && <Donate 
-          {...visualMode} 
+          {...visualMode}
+          user={user} 
           charity={charity}
           makeDonation={makeDonation}
           toThankPage={() => transition("THANK")}/>}
