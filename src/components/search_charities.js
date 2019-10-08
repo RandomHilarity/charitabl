@@ -7,8 +7,16 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
+  container: {
+    margin: "auto",
+    position: "absolute",
+    left: "50%",
+    transform: "translate(-50%)",
+    marginTop: 25
+  },
   card: {
     maxWidth: 600,
+    minWidth: 320,
     display: "flex",
     margin: 5
   },
@@ -28,17 +36,15 @@ const useStyles = makeStyles({
 export default function SearchCharities(props) {
   const classes = useStyles();
 
-
-
-  const charities = props.charities.map((charity,index) => {
+  const charities = props.charities.map((charity, index) => {
     const setCharityAndTransition = function() {
-      props.setCharity(charity)
-      props.onSelectCharity()
-    }
+      props.setCharity(charity);
+      props.onSelectCharity();
+    };
 
     return (
       <Card className={classes.card} key={index}>
-        <CardActionArea onClick={ setCharityAndTransition }>
+        <CardActionArea onClick={setCharityAndTransition}>
           <div className={classes.details}>
             <CardMedia className={classes.media}>
               <img src={charity.logo} alt={charity.name} />
@@ -56,8 +62,10 @@ export default function SearchCharities(props) {
   });
 
   return (
-    <section>
-      <Typography component="h4" variant="h4">Charities</Typography>
+    <section className={classes.container}>
+      <Typography component="h4" variant="h4">
+        Charities
+      </Typography>
       {charities}
     </section>
   );

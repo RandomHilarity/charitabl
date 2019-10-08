@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
   },
   subtext: {
     margin: theme.spacing(3, 0, 2)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
   }
 }));
 
@@ -23,20 +26,19 @@ export default function Thank(props) {
 
   return (
     <section className={classes.main}>
-      <Typography className={classes.title}>
-        Thank you for your donation!
-      </Typography>
+      <Typography className={classes.title}>Donation Failed</Typography>
       <Typography className={classes.subtext}>
-        You've made the world a better place.
+        The transaction was not completed. Either your card was declined or
+        there was a server error.
       </Typography>
       <Button
         width="50%"
         variant="contained"
         color="primary"
         className={classes.submit}
-        onClick={props.toUserPage}
+        onClick={props.back}
       >
-        Continue
+        Try Again
       </Button>
     </section>
   );

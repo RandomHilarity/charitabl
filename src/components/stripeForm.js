@@ -16,6 +16,7 @@ const createOptions = () => {
         fontSize: "16px",
         color: "#424770",
         letterSpacing: "0.025em",
+        border: "2px solid #9bc53d",
         "::placeholder": {
           color: "#aab7c4"
         }
@@ -39,20 +40,28 @@ class _SplitFieldsForm extends Component {
   };
 
   addDonationParams = function(obj) {
-    obj["amount"] = this.props.amount;
+    obj["amount"] = this.props.amount * 100;
     obj["charity"] = this.props.charity;
     obj["user_id"] = this.props.user.id;
     return obj;
-  }
+  };
 
   // creates Stripe token, adds Charity and Amount params and sends to db
+  // Depending on response, redirects to Thank or Failed
   handleSubmit = evt => {
     evt.preventDefault();
     if (this.props.stripe) {
-      this.props.stripe.createToken()
-       .then(obj => this.addDonationParams(obj))
-       .then(this.props.handleResult)
-       .then(this.props.toThankPage)
+      this.props.stripe
+        .createToken()
+        .then(obj => this.addDonationParams(obj))
+        .then(this.props.handleResult)
+        .then(result => {
+          if (result === "Succeeded") {
+            return this.props.toThankPage();
+          } else {
+            return this.props.toErrorPage();
+          }
+        });
     } else {
       console.log("Stripe.js hasn't loaded yet.");
     }
@@ -87,7 +96,7 @@ class _SplitFieldsForm extends Component {
             <input
               name="name"
               type="text"
-              placeholder="ZIP"
+              placeholder="Postal"
               className="StripeElement"
               required
             />
@@ -110,8 +119,11 @@ export default class SplitFieldsDemo extends Component {
   render() {
     return (
       <StripeProvider apiKey={"pk_test_wTtHNas8vXXSuUiab1R6wzTb00XhySO3H7"}>
-        <Elements>
-          <SplitFieldsForm handleResult={this.props.handleResult} {...this.props} />
+        <Elements border={1} borderColor="primary" borderRadius={10}>
+          <SplitFieldsForm
+            handleResult={this.props.handleResult}
+            {...this.props}
+          />
         </Elements>
       </StripeProvider>
     );

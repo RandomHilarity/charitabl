@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import StripeBtn from "../components/stripeBtn";
+import StripeForm from "./stripeForm";
 
 const useStyles = makeStyles(theme => ({
   details: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     margin: 5,
-    width: "100%",
+    width: "100%"
   },
   media: {
     width: 100,
@@ -38,7 +38,7 @@ export default function Donate(props) {
 
   const [state, setState] = React.useState({
     errorMessage: "",
-    amount: "",
+    amount: ""
   });
 
   const handleChange = name => event => {
@@ -71,13 +71,16 @@ export default function Donate(props) {
               autoFocus
               onChange={handleChange("amount")}
             />
+            .00
           </Grid>
-          <StripeBtn
+          <StripeForm
             user={props.user}
             handleResult={props.makeDonation}
             amount={state.amount}
             charity={props.charity}
             toThankPage={props.toThankPage}
+            toErrorPage={props.toErrorPage}
+            back={props.back}
           />
         </div>
       </div>
