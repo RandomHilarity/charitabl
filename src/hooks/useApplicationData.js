@@ -36,7 +36,7 @@ export default function useApplicationData() {
       .then(({ data }) => {
         if (data.status === "succeeded") {
           dispatch({
-            type: "SET_APPLICATION_DATA",
+            type: "MAKE_DONATION",
             donations: [data.donation, ...state.donations]
           });
           return "Succeeded";

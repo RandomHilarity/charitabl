@@ -5,7 +5,7 @@ Final project for Lighthouse Labs bootcamp. Not intended for production.
 ## Authors
 
 - **John Webster** - _Front End, some Back End_ - [RandomHilarity](https://github.com/RandomHilarity)
-- **Lucas Willow** - _Back End_ - [willow123red](https://github.com/willow123red)
+- **Lucas Wilson** - _Back End_ - [willow123red](https://github.com/willow123red)
 
 ## Images
 

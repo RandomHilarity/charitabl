@@ -25,19 +25,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://charitabl.netlify.com/">
-        Charitabl
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 export default function Login({ transition, onSubmit, user }) {
   const classes = useStyles();
 
@@ -107,7 +94,6 @@ export default function Login({ transition, onSubmit, user }) {
         </form>
       </div>
       <Box mt={5}>
-        <Copyright />
       </Box>
     </Container>
   );

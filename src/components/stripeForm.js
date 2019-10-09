@@ -16,7 +16,6 @@ const createOptions = () => {
         fontSize: "16px",
         color: "#424770",
         letterSpacing: "0.025em",
-        border: "2px solid #9bc53d",
         "::placeholder": {
           color: "#aab7c4"
         }

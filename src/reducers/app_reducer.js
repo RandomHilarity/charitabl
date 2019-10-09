@@ -16,9 +16,9 @@ export default function reducer(state, action) {
     case "GET_USER_DONATIONS":
       return { ...state, donations: action.userDonations };
 
-    case "MAKE_DONATION": {
+    case "MAKE_DONATION": 
       return { ...state, donations: action.donations };
-    }
+    
     default:
       throw new Error(`Unsupported action type: ${action.type}`);
   }

@@ -25,10 +25,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     minHeight: '3vh',
     backgroundColor: "#9bc53d",
-    position: "absolute",
-    left: 0,
-    bottom: 0,
-    right: 0,
+    marginTop: "auto",
   },
   footer: {
     padding: theme.spacing(2),

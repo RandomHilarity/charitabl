@@ -19,6 +19,7 @@ import useApplicationData from "./hooks/useApplicationData";
 import Container from "@material-ui/core/Container";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/core/styles"
 
 /*  Transition States
  *  ROOT - homepage
@@ -45,6 +46,13 @@ const theme = createMuiTheme({
   }
 });
 
+const useStyles = makeStyles({
+  body: {
+    maxWidth: "lg",
+    minHeight: "100vh",
+  },
+});
+
 const ROOT = "ROOT";
 const USER = "USER";
 const USER_SIGNUP = "USER_SIGNUP";
@@ -64,6 +72,8 @@ function App() {
     makeDonation 
   } = useApplicationData();
 
+  const classes = useStyles();
+
   const visualMode = useVisualMode(ROOT)
   const { mode, transition, back } = visualMode;
 
@@ -71,7 +81,7 @@ function App() {
     return (
     <ThemeProvider theme={theme}>
       <Header back={() => back()} />
-      <Container maxWidth="lg" height="100%">
+      <Container className={classes.body}>
         {mode === ROOT && <Landing {...visualMode} />}
         {mode === USER_SIGNUP && <UserSignup {...visualMode} onSubmit={handleSignUp} user={user}/>}
         {mode === USER_LOGIN && <UserLogin {...visualMode} onSubmit={handleLogin} user={user}/>}
@@ -91,6 +101,7 @@ function App() {
         )}
         {mode === QR_SCAN && (
           <Scanner
+            user={user}
             charities={charities}
             setCharity={setCharity}
             onSelectCharity={() => transition(DONATE)} />
