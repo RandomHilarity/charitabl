@@ -71,7 +71,7 @@ function App() {
     return (
     <ThemeProvider theme={theme}>
       <Header back={() => back()} />
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" height="100%">
         {mode === ROOT && <Landing {...visualMode} />}
         {mode === USER_SIGNUP && <UserSignup {...visualMode} onSubmit={handleSignUp} user={user}/>}
         {mode === USER_LOGIN && <UserLogin {...visualMode} onSubmit={handleLogin} user={user}/>}

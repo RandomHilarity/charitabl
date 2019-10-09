@@ -79,7 +79,7 @@ export default function StickyHeadTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const columns = [
-    { id: "charity", label: "Charity", minWidth: 100 },
+    { id: "charity", label: "Charity", minWidth: 80 },
     {
       id: "date",
       label: "Date",
