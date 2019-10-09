@@ -43,7 +43,13 @@ class Scanner extends Component {
           }}
         />
         <p>{this.state.result}</p>
-        <Button className="button" onClick={this.props.onSelectCharity}>
+        <Button 
+          className="button" 
+          onClick={this.props.onSelectCharity}
+          width="50%"
+          variant="contained"
+          color="primary"
+        >
           Go
         </Button>
       </div>

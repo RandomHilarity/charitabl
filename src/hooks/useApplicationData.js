@@ -60,9 +60,10 @@ export default function useApplicationData() {
     axios.put(`${config.API_PATH}/api/login`, userData).then(({ data }) => {
       if (data[0]) {
         setUser(data[0]);
-      }
+      } else {
       alert("Email or password does not match");
       return;
+      }
     });
   }
   return { state, setCharity, makeDonation, handleSignUp, handleLogin };
