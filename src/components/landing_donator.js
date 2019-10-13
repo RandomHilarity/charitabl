@@ -26,7 +26,7 @@ export default function Donor({ transition }) {
           Donors
         </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
-          Make and track donations to registered charities of you choice. Get
+          Make and track donations to registered charities of your choice. Get
           your tax receipts at any time.
         </Typography>
       </CardContent>

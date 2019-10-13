@@ -15,7 +15,6 @@ import {
   queryByText,
   queryByAltText
 } from "@testing-library/react";
-import { exportAllDeclaration } from '@babel/types';
 
 afterEach(cleanup);
 
@@ -29,8 +28,8 @@ describe("App", () => {
   it("can go to Signup", async () => {
     const { getByText } = render(<App />);
 
-    await waitForElement(() => getByText("SIGNUP"));
-    fireEvent.click(getByText("SIGNUP"));
+    await waitForElement(() => getByText("Signup"));
+    fireEvent.click(getByText("Signup"));
     expect(getByText("Sign Up")).toBeInTheDocument();
   })
   it("can go to Login", async () => {
