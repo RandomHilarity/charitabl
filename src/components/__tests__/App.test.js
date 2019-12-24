@@ -28,14 +28,14 @@ describe("App", () => {
   it("can go to Signup", async () => {
     const { getByText } = render(<App />);
 
-    await waitForElement(() => getByText("Signup"));
+    //await waitForElement(() => getByText("Signup"));
     fireEvent.click(getByText("Signup"));
     expect(getByText("Sign Up")).toBeInTheDocument();
   })
   it("can go to Login", async () => {
     const { getByText } = render(<App />);
 
-    await waitForElement(() => getByText("LOGIN"));
+    //await waitForElement(() => getByText("LOGIN"));
     fireEvent.click(getByText("LOGIN"));
     expect(getByText("Login")).toBeInTheDocument();
   })

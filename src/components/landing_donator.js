@@ -35,6 +35,7 @@ export default function Donor({ transition }) {
           className="button"
           size="small"
           color="primary"
+          data-testid="login-user"
           onClick={() => transition("USER_LOGIN")}
         >
           LOGIN
@@ -44,6 +45,7 @@ export default function Donor({ transition }) {
           className="button"
           size="small"
           color="primary"
+          data-testid="signup-user"
           onClick={() => transition("USER_SIGNUP")}
         >
           Signup
